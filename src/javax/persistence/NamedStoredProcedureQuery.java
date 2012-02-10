@@ -91,7 +91,7 @@ public @interface NamedStoredProcedureQuery {
     Class[] resultClasses() default {}; 
 
     /** The names of one or more result set mappings, as defined in metadata. */
-    String[] resultSetMapping() default {};
+    String[] resultSetMappings() default {};
 
     /** Query properties and hints.  (May include vendor-specific query hints.) */
     QueryHint[] hints() default {};
