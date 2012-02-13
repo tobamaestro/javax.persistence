@@ -17,6 +17,7 @@ package javax.persistence.criteria;
 
 import java.util.List;
 import java.util.Set;
+import javax.persistence.metamodel.EntityType;
 
 /**
  * The <code>AbstractQuery</code> interface defines functionality that is common
@@ -32,7 +33,24 @@ import java.util.Set;
  *
  * @since Java Persistence 2.0
  */
-public interface AbstractQuery<T> extends CommonAbstractQuery {
+public interface AbstractQuery<T> {
+
+    /**
+     * Create and add a query root corresponding to the given entity,
+     * forming a cartesian product with any existing roots.
+     * @param entityClass  the entity class
+     * @return query root corresponding to the given entity
+     */
+    <X> Root<X> from(Class<X> entityClass);
+
+    /**
+     * Create and add a query root corresponding to the given entity,
+     * forming a cartesian product with any existing roots.
+     * @param entity  metamodel entity representing the entity
+     *                of type X
+     * @return query root corresponding to the given entity
+     */
+    <X> Root<X> from(EntityType<X> entity);
 
     /**
      * Modify the query to restrict the query results according
@@ -110,6 +128,13 @@ public interface AbstractQuery<T> extends CommonAbstractQuery {
     AbstractQuery<T> distinct(boolean distinct);
 
     /**
+     * Create a subquery of the query. 
+     * @param type  the subquery result type
+     * @return subquery 
+     */
+    <U> Subquery<U> subquery(Class<U> type);
+
+    /**
      * Return the query roots.  These are the roots that have
      * been defined for the <code>CriteriaQuery</code> or <code>Subquery</code> itself,
      * including any subquery roots defined as a result of
@@ -125,6 +150,14 @@ public interface AbstractQuery<T> extends CommonAbstractQuery {
      *  @return selection item 
      */
     Selection<T> getSelection();
+
+    /**
+     * Return the predicate that corresponds to the where clause
+     * restriction(s), or null if no restrictions have been
+     * specified.
+     * @return where clause predicate
+     */
+    Predicate getRestriction();
 
     /**
      * Return a list of the grouping expressions.  Returns empty

@@ -17,26 +17,27 @@ package javax.persistence.criteria;
 
 import javax.persistence.metamodel.EntityType;
 
-
 /**
- * The CriteriaDelete interface defines functionality for performing
+ * The <code>CriteriaDelete</code> interface defines functionality for performing
  * bulk delete operations using the Criteria API
  *
  * <p>Criteria API bulk delete operations map directly to database 
  * delete operations.  The persistence context is not synchronized 
  * with the result of the bulk delete.
  *
+ * <p> A <code>CriteriaDelete</code> object must have a single root.
+ *
  * @param <T>  the entity type that is the target of the delete
  *
  * @since Java Persistence 2.1
  */
-public interface CriteriaDelete<T> extends CommonAbstractQuery {
+public interface CriteriaDelete<T> {
 
 
     /**
      * Create and add a query root corresponding to the entity
      * that is the target of the delete.
-     * A CriteriaDelete object has a single root, the object that 
+     * A <code>CriteriaDelete</code> object has a single root, the object that 
      * is being deleted.
      * @param entityClass  the entity class
      * @return query root corresponding to the given entity
@@ -46,7 +47,7 @@ public interface CriteriaDelete<T> extends CommonAbstractQuery {
     /**
      * Create and add a query root corresponding to the entity
      * that is the target of the delete.
-     * A CriteriaDelete object has a single root, the object that 
+     * A <code>CriteriaDelete</code> object has a single root, the object that 
      * is being deleted.
      * @param entity  metamodel entity representing the entity
      *                of type X
@@ -80,5 +81,20 @@ public interface CriteriaDelete<T> extends CommonAbstractQuery {
      * @return the modified query
      */
    CriteriaDelete<T> where(Predicate... restrictions);
+
+    /**
+     * Create a subquery of the query. 
+     * @param type  the subquery result type
+     * @return subquery 
+     */
+    <U> Subquery<U> subquery(Class<U> type);
+
+    /**
+     * Return the predicate that corresponds to the where clause
+     * restriction(s), or null if no restrictions have been
+     * specified.
+     * @return where clause predicate
+     */
+    Predicate getRestriction();
 
 }

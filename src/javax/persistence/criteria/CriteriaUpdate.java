@@ -19,7 +19,7 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.EntityType;
 
 /**
- * The CriteriaUpdate interface defines functionality for performing
+ * The <code>CriteriaUpdate</code> interface defines functionality for performing
  * bulk update operations using the Criteria API.
  *
  * <p>Criteria API bulk update operations map directly to database update
@@ -30,16 +30,18 @@ import javax.persistence.metamodel.EntityType;
  * The persistence context is not synchronized with the result of the
  * bulk update.
  *
+ * <p> A <code>CriteriaUpdate</code> object must have a single root.
+ *
  * @param <T>  the entity type that is the target of the update
  *
  * @since Java Persistence 2.1
  */
-public interface CriteriaUpdate<T> extends CommonAbstractQuery {
+public interface CriteriaUpdate<T> {
 
    /**
     * Create and add a query root corresponding to the entity
     * that is the target of the update.
-    * A CriteriaUpdate object has a single root, the object that
+    * A <code>CriteriaUpdate</code> object has a single root, the object that
     * is being updated.
     * @param entityClass  the entity class
     * @return query root corresponding to the given entity
@@ -49,7 +51,7 @@ public interface CriteriaUpdate<T> extends CommonAbstractQuery {
    /**
     * Create and add a query root corresponding to the entity
     * that is the target of the update.
-    * A CriteriaUpdate object has a single root, the object that
+    * A <code>CriteriaUpdate</code> object has a single root, the object that
     * is being updated.
     * @param entity  metamodel entity representing the entity
     *                of type X
@@ -123,5 +125,20 @@ public interface CriteriaUpdate<T> extends CommonAbstractQuery {
      * @return the modified query
      */
    CriteriaUpdate<T> where(Predicate... restrictions);
+
+    /**
+     * Create a subquery of the query. 
+     * @param type  the subquery result type
+     * @return subquery 
+     */
+    <U> Subquery<U> subquery(Class<U> type);
+
+    /**
+     * Return the predicate that corresponds to the where clause
+     * restriction(s), or null if no restrictions have been
+     * specified.
+     * @return where clause predicate
+     */
+    Predicate getRestriction();
 
 }
