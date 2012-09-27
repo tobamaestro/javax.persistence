@@ -55,19 +55,20 @@
        <format property="jpaproto.build.date" pattern="yyyyMMdd"/>
        <format property="jpaproto.build.time" pattern="HHmm"/>
     </tstamp>
-    <property name="jpaproto.qualifier"    value="v${jpaproto.build.date}${jpaproto.build.time}"/>
-    <property name="jpaproto.spec.vendor"  value="Oracle"/>
-    <property name="implementation.vendor" value="Eclipse.org - EclipseLink Project"/>
-    <property name="jpaproto.spec.version" value="2.1 Draft 8"/>
-    <property name="jpaproto.version"      value="2.0.102"/>
-    <property name="jpaproto.bundle.name"  value="Java Persistence API 2.1 preview"/>
+    <property name="jpaproto.qualifier"             value="v${jpaproto.build.date}${jpaproto.build.time}"/>
+    <property name="jpaproto.spec.vendor"           value="Oracle"/>
+    <property name="implementation.vendor"          value="Eclipse.org - EclipseLink Project"/>
+    <property name="jpaproto.spec.version"          value="2.1 Draft 8"/>
+    <property name="jpaproto.version"               value="2.0.102"/>
+    <property name="jpaproto.osgi.service.version"  value="1.0.100"/>
+    <property name="jpaproto.bundle.name"           value="Java Persistence API 2.1 preview"/>
     <!-- Project infrastructure properties -->
-    <property name="src.dir"               value="src"/>
-    <property name="package.dir"           value=".."/>
-    <property name="classes.dir"           value="classes"/>
-    <property name="jpaproto.resource.dir" value="META-INF"/>
-    <property name="jpaproto.jar"          value="${ant.project.name}_${jpaproto.version}.${jpaproto.qualifier}.jar"/>
-    <property name="jpaproto.src.jar"      value="${ant.project.name}.source_${jpaproto.version}.${jpaproto.qualifier}.jar"/>
+    <property name="src.dir"                        value="src"/>
+    <property name="package.dir"                    value=".."/>
+    <property name="classes.dir"                    value="classes"/>
+    <property name="jpaproto.resource.dir"          value="META-INF"/>
+    <property name="jpaproto.jar"                   value="${ant.project.name}_${jpaproto.version}.${jpaproto.qualifier}.jar"/>
+    <property name="jpaproto.src.jar"               value="${ant.project.name}.source_${jpaproto.version}.${jpaproto.qualifier}.jar"/>
 
     <!-- local property overrides -->
     <condition property="custom.properties.message" value="Loading ${user.home}/build.properties..."
