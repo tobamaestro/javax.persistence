@@ -17,7 +17,7 @@
     <properties>
         <!-- TOOL Properties -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <tycho.version>0.15.0</tycho.version>
+        <tycho.version>0.16.0</tycho.version>
         <release.version>2.0.103</release.version>
         <build.qualifier>v${maven.build.timestamp}</build.qualifier>
         <forceContextQualifier>${build.qualifier}</forceContextQualifier>
