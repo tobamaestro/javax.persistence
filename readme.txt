@@ -8,9 +8,10 @@
  http://www.eclipse.org/org/documents/edl-v10.php.
   
   Contributors:
-      Linda DeMichiel -Java Persistence 2.1 - Draft, Version 1.0 (January 17, 2012)
-      Specification available from http://jcp.org/en/jsr/detail?id=
+      Linda DeMichiel -Java Persistence 2.1 - Early Draft Review 2 (October 2012)
+      Specification available from http://jcp.org/en/jsr/detail?id=338
       Oracle Committers - EclipseLink specific implementations and OSGi support
+      Oracle Committers - Misc Bugfixes
  
 Java(TM) Persistence API, Version 2.1 - EARLY ACCESS
 This is an implementation of an early-draft specification developed under the 
