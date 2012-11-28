@@ -12,3 +12,12 @@
       Specification available from http://jcp.org/en/jsr/detail?id=
       Oracle Committers - EclipseLink specific implementations and OSGi support
  
+Java(TM) Persistence API, Version 2.1 - EARLY ACCESS
+This is an implementation of an early-draft specification developed under the 
+Java Community Process (JCP).  The code is untested and presumed not to be a  
+compatible implementation of JSR 338: Java(TM) Persistence 2.1.   
+We encourage you to migrate to an implementation of the Java(TM) Persistence 
+API, Version 2.1 Specification that has been tested and verified to be compatible 
+as soon as such an implementation is available, and we encourage you to retain 
+this notice in any implementation of Java(TM) Persistence API, Version 2.1 
+Specification that you distribute.
