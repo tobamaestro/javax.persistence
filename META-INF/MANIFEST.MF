@@ -3,7 +3,7 @@ Export-Package: javax.persistence;jpa="2.0";version="2.0.5",
  javax.persistence.criteria;jpa="2.0";version="2.0.5",
  javax.persistence.metamodel;jpa="2.0";version="2.0.5",
  javax.persistence.spi;jpa="2.0";version="2.0.5",
-  org.osgi.service.jpa;uses:="javax.persistence";version="1.0.0"
+ org.osgi.service.jpa;version="1.0.0"
 Implementation-Version: 2.0.5
 Bundle-ClassPath: .
 Specification-Vendor: Sun Microsystems Inc.
