@@ -28,6 +28,36 @@ import javax.persistence.metamodel.Attribute;
 public interface Fetch<Z, X> extends FetchParent<Z, X> {
 
     /**
+     *  Modify the fetch join to restrict the result according to
+     *  the specified ON condition and return the fetch join object.  
+     *  Replaces the previous ON condition, if any.
+     *  @param restriction  a simple or compound boolean expression
+     *  @return the modified fetch join object
+     *  @since Java Persistence 2.1
+     */
+    Fetch<Z, X> on(Expression<Boolean> restriction);
+
+
+    /**
+     *  Modify the fetch join to restrict the result according to
+     *  the specified ON condition and return the fetch join object.  
+     *  Replaces the previous ON condition, if any.
+     *  @param restrictions  zero or more restriction predicates
+     *  @return the modified fetch join object
+     *  @since Java Persistence 2.1
+     */
+    Fetch<Z, X> on(Predicate... restrictions);
+
+    /** 
+     *  Return the predicate that corresponds to the ON 
+     *  restriction(s), or null if no ON condition has been
+     *  specified.
+     *  @return the ON restriction predicate
+     *  @since Java Persistence 2.1
+     */
+    Predicate getOn();
+
+    /**
      * Return the metamodel attribute corresponding to the 
      * fetch join.
      * @return metamodel attribute for the join

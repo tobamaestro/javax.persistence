@@ -87,28 +87,6 @@ public interface PersistenceProvider {
     public void generateSchema(PersistenceUnitInfo info, Map map);
 
     /**
-     * Create database schemas and/or tables and/or create DDL
-     * scripts as determined by the supplied properties.
-     * <p>
-     * Called by the Persistence class when schema generation is to
-     * occur as a separate phase from creation of the entity
-     * manager factory.
-     * <p>
-     * @param persistenceUnitName the name of the persistence unit
-     * @param map properties for schema generation;  these may
-     *             also contain provider-specific properties.  The
-     *             value of these properties override any values that
-     *             may have been configured elsewhere.
-     * @return true  if schema was generated, otherwise false
-     * @throws PersistenceException if insufficient or inconsistent
-     *         configuration information is provided or if schema
-     *         generation otherwise fails
-     *
-     * @since Java Persistence 2.1
-     */
-    public boolean generateSchema(String persistenceUnitName, Map map); 
-
-    /**
      * Return the utility interface implemented by the persistence
      * provider.
      * @return ProviderUtil interface

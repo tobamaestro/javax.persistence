@@ -10,6 +10,7 @@
  *
  * Contributors:
  *     Linda DeMichiel - Java Persistence 2.1
+ *     Linda DeMichiel - Java Persistence 2.0
  *
  ******************************************************************************/
 package javax.persistence;

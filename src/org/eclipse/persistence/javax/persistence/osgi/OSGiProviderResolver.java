@@ -214,9 +214,4 @@ public class OSGiProviderResolver implements PersistenceProviderResolver,
     public void generateSchema(PersistenceUnitInfo info, Map map) {
         // TODO: JPA 2.1 Functionality
     }
-
-    public boolean generateSchema(String persistenceUnitName, Map map) {
-        // TODO Auto-generated method stub
-        return false;
-    }
 }

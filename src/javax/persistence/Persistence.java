@@ -87,6 +87,7 @@ public class Persistence {
         return emf;
     }
 
+
     /**
      * Create database schemas and/or tables and/or create DDL
      * scripts as determined by the supplied properties.
@@ -106,17 +107,9 @@ public class Persistence {
      * @since Java Persistence 2.1
      */
     public static void generateSchema(String persistenceUnitName, Map map) {
-        PersistenceProviderResolver resolver = PersistenceProviderResolverHolder.getPersistenceProviderResolver();
-        List<PersistenceProvider> providers = resolver.getPersistenceProviders();
-        
-        for (PersistenceProvider provider : providers) {
-            if (provider.generateSchema(persistenceUnitName, map)) {
-                return;
-            }
-        }
-        
-        throw new PersistenceException("No Persistence provider to generate schema named " + persistenceUnitName);
+
     }
+
 
     /**
      * Return the PersistenceUtil instance

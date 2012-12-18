@@ -207,14 +207,4 @@ public interface EntityManagerFactory {
      */
     public <T> T unwrap(Class<T> cls);
 
-    /**
-     * Add a named copy of the EntityGraph to the
-     * EntityManagerFactory.  If an entity graph with the same name
-     * already exists, it is replaced.
-     * @param graphName  name for the entity graph
-     * @param entityGraph  entity graph
-     * @since Java Persistence 2.1
-     */
-    public <T> void addNamedEntityGraph(String graphName, EntityGraph<T> entityGraph);
-
 }
