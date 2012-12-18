@@ -16,6 +16,7 @@
 package javax.persistence;
 
 import java.util.Map;
+import java.util.List;
 import javax.persistence.metamodel.Metamodel;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -80,6 +81,42 @@ public interface EntityManager {
     public <T> T merge(T entity);
     
     /**
+     * Merge the state of the given entity into the current
+     * persistence context using the EntityGraph as a template for
+     * applying the merge operation.
+     * @param entity  entity instance
+     * @param entityGraph   the entity graph template to be used for the
+     *        merge operation
+     * @param properties  provider-specific hints.  If an implementation
+     *        does not recognize a hint, it must be ignored.
+     * @return the managed instance that the state was merged to
+     * @throws IllegalArgumentException  if the instance is not an entity, 
+     *         is a removed entity
+     * @throws TransactionRequiredException if there is no transaction 
+     *         when invoked on a container-managed entity manager that 
+     *         is of type <code>PersistenceContextType.TRANSACTION</code>
+     * @since Java Persistence 2.1
+     */
+    public <T> T merge(T entity, EntityGraph<? super T>  entityGraph, Map<String, Object> properties);
+
+    /**
+     * Copy the provided entity graph using the EntityGraph argument
+     * as a template to specify the attributes that will be copied.
+     * Attributes not included in the EntityGraph argument will not be
+     * copied.
+     * @param entity entity instance
+     * @param entityGraph   the entity graph template to be used for
+     *        the copy operation
+     * @param properties  provider-specific hints.  If an implementation
+     *        does not recognize a hint, it must be ignored.
+     * @return copy of the entity
+     * @throws IllegalArgumentException   if the instance is not an entity 
+     *
+     * @since Java Persistence 2.1
+     */
+public <T> T copy(T entity, EntityGraph<? super T> entityGraph, Map<String, Object> properties);
+
+    /**
      * Remove the entity instance.
      * @param entity  entity instance
      * @throws IllegalArgumentException if the instance is not an
@@ -102,7 +139,7 @@ public interface EntityManager {
      *         not exist
      * @throws IllegalArgumentException if the first argument does
      *         not denote an entity type or the second argument is 
-     *         is not a valid type for that entity’s primary key or
+     *         is not a valid type for that entity's primary key or
      *         is null
      */
     public <T> T find(Class<T> entityClass, Object primaryKey);
@@ -122,7 +159,7 @@ public interface EntityManager {
      *         not exist 
      * @throws IllegalArgumentException if the first argument does 
      *         not denote an entity type or the second argument is
-     *         is not a valid type for that entity’s primary key or 
+     *         is not a valid type for that entity's primary key or 
      *         is null 
      * @since Java Persistence 2.0
      */ 
@@ -850,4 +887,44 @@ public interface EntityManager {
      * @since Java Persistence 2.0
      */
     public Metamodel getMetamodel();
+
+    /**
+     * Return a mutable EntityGraph that can be used to dynamically create an
+     * EntityGraph.
+     * @param rootType class of entity graph
+     * @return entity graph
+     * @since Java Persistence 2.1
+     */
+    public <T> EntityGraph<T> createEntityGraph(Class<T> rootType);
+
+    /**
+     * Return a mutable copy of the named EntityGraph.  If there
+     * is no entity graph with the specified name, null is returned.
+     * @param graphName name of an entity graph
+     * @return entity graph
+     * @since Java Persistence 2.1
+     */
+    public EntityGraph<?> createEntityGraph(String graphName);
+
+    /**
+     * Return a named EntityGraph. The returned EntityGraph 
+     * should be considered immutable.
+     * @param graphName  name of an existing entity graph
+     * @return named entity graph
+     * @throws IllegalArgumentException if there is no EntityGraph of
+     *         the given name
+     * @since Java Persistence 2.1
+     */
+    public <T> EntityGraph<T> getEntityGraph(String graphName);
+
+    /**
+     * Return all named EntityGraphs that have been defined for the provided
+     * class type.
+     * @param entityClass  entity class
+     * @return list of all entity graphs defined for the entity
+     * @throws IllegalArgumentException if the class is not an entity
+     * @since Java Persistence 2.1
+     */
+    public <T> List<EntityGraph<? super T>> getEntityGraphs(Class<T> entityClass);
+
 }
