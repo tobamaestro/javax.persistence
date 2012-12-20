@@ -21,8 +21,7 @@ import static java.lang.annotation.ElementType.TYPE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * Used to specify the path and boundaries for an operation (merge, copy,
- * find) or query.
+ * Used to specify the path and boundaries for a find operation or query.
  *
  * @since Java Persistence 2.1
  */

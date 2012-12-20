@@ -79,42 +79,6 @@ public interface EntityManager {
      *         <code>PersistenceContextType.TRANSACTION</code>
      */    
     public <T> T merge(T entity);
-    
-    /**
-     * Merge the state of the given entity into the current
-     * persistence context using the EntityGraph as a template for
-     * applying the merge operation.
-     * @param entity  entity instance
-     * @param entityGraph   the entity graph template to be used for the
-     *        merge operation
-     * @param properties  provider-specific hints.  If an implementation
-     *        does not recognize a hint, it must be ignored.
-     * @return the managed instance that the state was merged to
-     * @throws IllegalArgumentException  if the instance is not an entity, 
-     *         is a removed entity
-     * @throws TransactionRequiredException if there is no transaction 
-     *         when invoked on a container-managed entity manager that 
-     *         is of type <code>PersistenceContextType.TRANSACTION</code>
-     * @since Java Persistence 2.1
-     */
-    public <T> T merge(T entity, EntityGraph<? super T>  entityGraph, Map<String, Object> properties);
-
-    /**
-     * Copy the provided entity graph using the EntityGraph argument
-     * as a template to specify the attributes that will be copied.
-     * Attributes not included in the EntityGraph argument will not be
-     * copied.
-     * @param entity entity instance
-     * @param entityGraph   the entity graph template to be used for
-     *        the copy operation
-     * @param properties  provider-specific hints.  If an implementation
-     *        does not recognize a hint, it must be ignored.
-     * @return copy of the entity
-     * @throws IllegalArgumentException   if the instance is not an entity 
-     *
-     * @since Java Persistence 2.1
-     */
-public <T> T copy(T entity, EntityGraph<? super T> entityGraph, Map<String, Object> properties);
 
     /**
      * Remove the entity instance.
