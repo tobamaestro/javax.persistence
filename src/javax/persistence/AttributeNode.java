@@ -15,8 +15,6 @@
 
 package javax.persistence;
 
-import javax.persistence.metamodel.Type;
-
 /**
  * Represents an attribute node of an entity graph.
  *
@@ -27,12 +25,6 @@ import javax.persistence.metamodel.Type;
  * @since Java Persistence 2.1
  */
 public interface AttributeNode<T> {
-
-    /**
-     * Return the Type of the attribute node.
-     * @return Type object for the attribute node
-     */
-    public Type<T> getType();
 
     /**
      * Return the name of the attribute corresponding to the
