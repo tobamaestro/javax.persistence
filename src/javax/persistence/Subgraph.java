@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 - 2012 Oracle Corporation. All rights reserved.
+ * Copyright (c) 2011 - 2013 Oracle Corporation. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v1.0 and Eclipse Distribution License v. 1.0
@@ -19,7 +19,7 @@ import javax.persistence.metamodel.Attribute;
 import java.util.List;
 
 /**
- * This type represents a AttributeNode of an EntityGraph that
+ * This type represents a subgraph for an attribute node that
  * corresponds to a Managed Type. Using this class, an entity subgraph
  * can be embedded within an EntityGraph.
  *
@@ -27,10 +27,11 @@ import java.util.List;
  *
  * @see EntityGraph
  * @see AttributeNode
+ * @see NamedSubgraph
  *
  * @since Java Persistence 2.1
  */
-public interface Subgraph<T> extends AttributeNode<T> {
+public interface Subgraph<T> {
 
     /**
      * Add one or more attribute nodes to the entity graph.
@@ -187,7 +188,8 @@ public interface Subgraph<T> extends AttributeNode<T> {
     /**
      * Return the attribute nodes corresponding to the attributes of
      * this managed type that are included in the subgraph.
-     * @return list of attribute nodes included in the subgraph
+     * @return list of attribute nodes included in the subgraph or
+     * empty List if none have been defined
      */
     public List<AttributeNode<?>> getAttributeNodes();
 

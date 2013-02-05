@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 - 2012 Oracle Corporation. All rights reserved.
+ * Copyright (c) 2008 - 2013 Oracle Corporation. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v1.0 and Eclipse Distribution License v. 1.0
@@ -421,7 +421,7 @@ public interface Query {
      * @return the same query instance
      * @throws IllegalStateException if the query is found not to be 
      *         a Java Persistence query language SELECT query
-     *         or a Criteria API query
+     *         or a CriteriaQuery query
      * @since Java Persistence 2.0
      */
     Query setLockMode(LockModeType lockMode);

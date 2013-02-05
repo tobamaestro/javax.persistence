@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 - 2012 Oracle Corporation. All rights reserved.
+ * Copyright (c) 2008 - 2013 Oracle Corporation. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v1.0 and Eclipse Distribution License v. 1.0
@@ -101,7 +101,7 @@ public class Persistence {
      *             value of these properties override any values that
      *             may have been configured elsewhere..             
      * @throws PersistenceException if insufficient or inconsistent
-     *         configuration information is provided of if schema
+     *         configuration information is provided or if schema
      *         generation otherwise fails.
      *
      * @since Java Persistence 2.1

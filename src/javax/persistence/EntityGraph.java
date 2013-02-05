@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 - 2012 Oracle Corporation. All rights reserved.
+ * Copyright (c) 2011 - 2013 Oracle Corporation. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v1.0 and Eclipse Distribution License v. 1.0
@@ -23,9 +23,15 @@ import java.util.List;
  * as a template to define the attribute nodes and boundaries of a
  * graph of entities and entity relationships. The root must be an
  * entity type.
+ * <p>
+ * The methods to add subgraphs implicitly create the
+ * corresponding attribute nodes as well; such attribute nodes
+ * should not be redundantly specified.
  *
  * @param <T> The type of the root entity.
  *
+ * @see AttributeNode
+ * @see Subgraph
  * @see NamedEntityGraph
  *
  * @since Java Persistence 2.1
@@ -38,10 +44,6 @@ public interface EntityGraph<T> {
      * annotation, XML descriptor element, or added by means of the
      * <code>addNamedEntityGraph</code> method.  Returns null if the
      * EntityGraph is not a named EntityGraph.
-     * <p>
-     * The methods to add subgraphs implicitly create the
-     * corresponding attribute nodes as well; such attribute nodes
-     * should not be redundantly specified.
      */
     public String getName();
 
@@ -218,7 +220,8 @@ public interface EntityGraph<T> {
     /**
      * Return the attribute nodes of this entity that are included in
      * the entity graph.
-     * @return attribute nodes for the annotated entity type
+     * @return attribute nodes for the annotated entity type or empty
+     *         list if none have been defined
      */
     public List<AttributeNode<?>> getAttributeNodes();
 
