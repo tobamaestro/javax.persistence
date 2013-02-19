@@ -20,6 +20,7 @@ import java.lang.annotation.Retention;
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
+import static javax.persistence.ConstraintMode.PROVIDER_DEFAULT;
 
 /**
  * Specifies a column for joining an entity association or element
@@ -170,11 +171,12 @@ public @interface JoinColumn {
     String table() default "";
 
     /**
-     *  (Optional)  Used to specify or disable a foreign key constraint when
-     *  table generation is in effect.  If this element is not specified,
-     *  the persistence provider's default foreign key strategy will apply.
+     *  (Optional) Used to specify or control the generation of a
+     *  foreign key constraint when table generation is in effect.  If
+     *  this element is not specified, the persistence provider's
+     *  default foreign key strategy will apply.
      *
      *  @since Java Persistence 2.1
      */
-    ForeignKey foreignKey() default @ForeignKey();
+    ForeignKey foreignKey() default @ForeignKey(PROVIDER_DEFAULT);
 }

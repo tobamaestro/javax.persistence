@@ -20,6 +20,7 @@ import java.lang.annotation.Retention;
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
+import static javax.persistence.ConstraintMode.PROVIDER_DEFAULT;
 
 /**
  * Specifies the mapping of associations. It is applied to the
@@ -105,6 +106,36 @@ public @interface JoinTable {
      * <p> Uses the same defaults as for {@link JoinColumn}.
      */
     JoinColumn[] inverseJoinColumns() default {};
+
+    /**
+     *  (Optional) Used to specify or control the generation of a
+     *   foreign key constraint for the columns corresponding to the
+     *   <code>joinColumns</code> element when table generation is in
+     *   effect.  If both this element and the <code>foreignKey</code>
+     *   element of any of the <code>joinColumns</code> elements are
+     *   specified, the behavior is undefined.  If no foreign key
+     *   annotation element is specified in either location, the
+     *   persistence provider's default foreign key strategy will
+     *   apply.
+     *
+     *  @since Java Persistence 2.1
+     */
+    ForeignKey foreignKey() default @ForeignKey(PROVIDER_DEFAULT);
+
+    /**
+     *  (Optional) Used to specify or control the generation of a
+     *  foreign key constraint for the columns corresponding to the
+     *  <code>inverseJoinColumns</code> element when table generation
+     *  is in effect.  If both this element and the
+     *  <code>foreignKey</code> element of any of the
+     *  <code>inverseJoinColumns</code> elements are specified, the
+     *  behavior is undefined.  If no foreign key annotation element
+     *  is specified in either location, the persistence provider's
+     *  default foreign key strategy will apply.
+     *
+     *  @since Java Persistence 2.1
+     */
+    ForeignKey inverseForeignKey() default @ForeignKey(PROVIDER_DEFAULT);
 
     /**
      * (Optional) Unique constraints that are

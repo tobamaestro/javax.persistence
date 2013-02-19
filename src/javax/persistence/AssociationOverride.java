@@ -21,6 +21,7 @@ import static java.lang.annotation.ElementType.TYPE;
 import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
+import static javax.persistence.ConstraintMode.PROVIDER_DEFAULT;
 
 /**
  * Used to override a mapping for an entity relationship.
@@ -143,6 +144,21 @@ public @interface AssociationOverride {
      * the mapping of the relationship.
      */
     JoinColumn[] joinColumns() default {};
+
+    /**
+     *  (Optional) Used to specify or control the generation of a
+     *   foreign key constraint for the columns corresponding to the
+     *   <code>joinColumns</code> element when table generation is in
+     *   effect.  If both this element and the <code>foreignKey</code>
+     *   element of any of the <code>joinColumns</code> elements are
+     *   specified, the behavior is undefined.  If no foreign key
+     *   annotation element is specified in either location, the
+     *   persistence provider's default foreign key strategy will
+     *   apply.
+     *
+     *  @since Java Persistence 2.1
+     */
+    ForeignKey foreignKey() default @ForeignKey(PROVIDER_DEFAULT);
 
     /**
      * The join table that maps the relationship.
