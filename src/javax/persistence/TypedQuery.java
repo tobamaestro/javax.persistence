@@ -237,7 +237,7 @@ public interface TypedQuery<X> extends Query {
       * @return the same query instance
       * @throws IllegalStateException if the query is found not to 
       *         be a Java Persistence query language SELECT query
-      *         or a Criteria API query
+      *         or a CriteriaQuery query
       */
      TypedQuery<X> setLockMode(LockModeType lockMode);
 

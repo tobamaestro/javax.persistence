@@ -194,7 +194,7 @@ public interface Subgraph<T> {
     public List<AttributeNode<?>> getAttributeNodes();
 
     /**
-     * Return the type of for which this subgraph was defined.
+     * Return the type for which this subgraph was defined.
      * @return managed type referenced by the subgraph
      */
     public Class<T> getClassType();

@@ -137,8 +137,6 @@ public interface EntityGraph<T> {
      * Add a node to the graph that corresponds to a map key
      * that is a managed type. This allows for construction of
      * multi-node entity graphs that include related managed types.
-     * Use of this method implicitly adds the corresponding attribute
-     * node to the graph.
      *
      * @param attribute  attribute
      * @return subgraph for the key attribute
