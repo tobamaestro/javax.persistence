@@ -146,7 +146,8 @@ public interface EntityManagerFactory {
     /**
      * Access the cache that is associated with the entity manager 
      * factory (the "second level cache").
-     * @return instance of the <code>Cache</code> interface
+     * @return instance of the <code>Cache</code> interface or null if
+     * no cache is in use
      * @throws IllegalStateException if the entity manager factory
      * has been closed
      *

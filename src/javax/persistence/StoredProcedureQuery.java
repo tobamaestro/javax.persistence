@@ -16,9 +16,83 @@ package javax.persistence;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Interface used to control stored procedure query execution.
+ *
+ * <p>
+ * Stored procedure query execution may be controlled in accordance with 
+ * the following:
+ * <p>
+ * <ul>
+ * <li>The <code>setParameter</code> methods are used to set the values of 
+ * all required <code>IN</code> and <code>INOUT</code> parameters.  
+ * It is not required to set the values of stored procedure parameters 
+ * for which default values have been defined by the stored procedure.</li>
+ * <li>
+ * When <code>getResultList</code> and <code>getSingleResult</code> are
+ * called on a <code>StoredProcedureQuery</code> object, the provider 
+ * will call <code>execute</code> on an unexecuted stored procedure 
+ * query before processing <code>getResultList</code> or
+ * <code>getSingleResult</code>.</li>
+ * <li>
+ * When <code>executeUpdate</code> is called on a 
+ * <code>StoredProcedureQuery</code> object, the provider will call 
+ * <code>execute</code> on an unexecuted stored procedure query
+ *  followed by <code>getUpdateCount</code>.  The results of 
+ * <code>executeUpdate</code> will be those of <code>getUpdateCount</code>.</li>
+ * <li>
+ * The <code>execute</code> method supports both the simple case where 
+ * scalar results are passed back only via <code>INOUT</code> and 
+ * <code>OUT</code> parameters as well as the most general case 
+ * (multiple result sets and/or update counts, possibly also in 
+ * combination with output parameter values).</li>
+ * <li>
+ * The <code>execute</code> method returns true if the first result is a 
+ * result set, and false if it is an update count or there are no results 
+ * other than through <code>INOUT</code> and <code>OUT</code> parameters, 
+ * if any.</li>
+ * <li>
+ * If the <code>execute</code> method returns true, the pending result set 
+ * can be obtained by calling <code>getResultList</code> or
+ * <code>getSingleResult</code>.</li>
+ * <li>
+ * The <code>hasMoreResults</code> method can then be used to test 
+ * for further results.</li>
+ * <li>
+ * If <code>execute</code> or <code>hasMoreResults</code> returns false, 
+ * the <code>getUpdateCount</code> method can be called to obtain the 
+ * pending result if it is an update count.  The <code>getUpdateCount</code>
+ * method will return either the update count (zero or greater) or -1 
+ * if there is no update count (i.e., either the next result is a result set 
+ * or there is no next update count).</li>
+ * <li>
+ * For portability, results that correspond to JDBC result sets and 
+ * update counts need to be processed before the values of any 
+ * <code>INOUT</code> or <code>OUT</code> parameters are extracted.</li>
+ * <li>
+ * After results returned through <code>getResultList</code> and 
+ * <code>getUpdateCount</code> have been exhausted, results returned through 
+ * <code>INOUT</code> and <code>OUT</code> parameters can be retrieved.</li>
+ * <li>
+ * The <code>getOutputParameterValue</code> methods are used to retrieve 
+ * the values passed back from the procedure through <code>INOUT</code> 
+ * and <code>OUT</code> parameters.</li>
+ * <li>
+ * When using <code>REF_CURSOR</code> parameters for result sets the
+ * update counts should be exhausted before calling <code>getResultList</code>
+ * to retrieve the result set.  Alternatively, the <code>REF_CURSOR</code>
+ * result set can be retrieved through <code>getOutputParameterValue</code>.
+ * Result set mappings will be applied to results corresponding to
+ * <code>REF_CURSOR</code> parameters in the order the <code>REF_CURSOR</code>
+ * parameters were registered with the query.</li>
+ * <li>
+ * In the simplest case, where results are returned only via 
+ * <code>INOUT</code> and <code>OUT</code> parameters, <code>execute</code>
+ * can be followed immediately by calls to 
+ * <code>getOutputParameterValue</code>.</li>
+ * </ul>
  *
  * @see Query
  * @see Parameter
@@ -236,6 +310,62 @@ public interface StoredProcedureQuery extends Query {
      *         is rolled back 
      */
     boolean execute();
+
+    /**
+     * Return the update count of -1 if there is no pending result or
+     * if the first result is not an update count.  The provider will
+     * call <code>execute</code> on the query if needed.
+     * @return the update count or -1 if there is no pending result
+     * or if the next result is not an update count.
+     * @throws TransactionRequiredException if there is 
+     *         no transaction or the persistence context has not
+     *         been joined to the transaction
+     * @throws QueryTimeoutException if the statement execution 
+     *         exceeds the query timeout value set and only 
+     *         the statement is rolled back
+     * @throws PersistenceException if the query execution exceeds 
+     *         the query timeout value set and the transaction 
+     *         is rolled back 
+     */
+    int executeUpdate();
+
+    /**
+     * Retrieve the list of results from the next result set.
+     * The provider will call <code>execute</code> on the query
+     * if needed.
+     * A <code>REF_CURSOR</code> result set, if any, will be retrieved
+     * in the order the <code>REF_CURSOR</code> parameter was 
+     * registered with the query.
+     * @return a list of the results or null is the next item is not 
+     * a result set
+     * @throws QueryTimeoutException if the query execution exceeds
+     *         the query timeout value set and only the statement is
+     *         rolled back
+     * @throws PersistenceException if the query execution exceeds 
+     *         the query timeout value set and the transaction 
+     *         is rolled back 
+     */
+    List getResultList();
+
+    /**
+     * Retrieve a single result from the next result set.
+     * The provider will call <code>execute</code> on the query
+     * if needed.
+     * A <code>REF_CURSOR</code> result set, if any, will be retrieved
+     * in the order the <code>REF_CURSOR</code> parameter was 
+     * registered with the query.
+     * @return the result or null if the next item is not a result set
+     * @throws NoResultException if there is no result in the next
+     *         result set
+     * @throws NonUniqueResultException if more than one result
+     * @throws QueryTimeoutException if the query execution exceeds
+     *         the query timeout value set and only the statement is
+     *         rolled back
+     * @throws PersistenceException if the query execution exceeds 
+     *         the query timeout value set and the transaction 
+     *         is rolled back 
+     */
+    Object getSingleResult();
 
     /**
      * Return true if the next result corresponds to a result set,
