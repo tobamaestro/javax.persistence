@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
-Export-Package: javax.persistence;jpa="2.0";version="2.0.109",
- javax.persistence.criteria;jpa="2.0";version="2.0.109",
- javax.persistence.metamodel;jpa="2.0";version="2.0.109",
- javax.persistence.spi;jpa="2.0";version="2.0.109",
+Export-Package: javax.persistence;jpa="2.0";version="2.0.110",
+ javax.persistence.criteria;jpa="2.0";version="2.0.110",
+ javax.persistence.metamodel;jpa="2.0";version="2.0.110",
+ javax.persistence.spi;jpa="2.0";version="2.0.110",
  org.osgi.service.jpa;version="1.0.100"
-Implementation-Version: 2.0.109
+Implementation-Version: 2.0.110
 Bundle-ClassPath: .
 Specification-Vendor: Oracle
 Bundle-Name: Java Persistence API 2.1 preview
@@ -12,7 +12,7 @@ Created-By: 1.6.0_35 (Sun Microsystems Inc.)
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Implementation-Vendor: Eclipse.org - EclipseLink Project
 Bundle-Vendor: Eclipse.org - EclipseLink Project
-Bundle-Version: 2.0.109.qualifier
+Bundle-Version: 2.0.110.qualifier
 Bundle-ManifestVersion: 2
 Bundle-Activator: org.eclipse.persistence.javax.persistence.osgi.Activator
 Import-Package: javax.sql;resolution:=optional,
