@@ -104,7 +104,8 @@ public @interface PrimaryKeyJoinColumn {
 
     /**
      *  (Optional) Used to specify or control the generation of a
-     *  foreign key constraint when table generation is in effect.  If
+     *  foreign key constraint for the primary key join column 
+     *  when table generation is in effect.  If
      *  this element is not specified, the persistence provider's
      *  default foreign key strategy will apply.
      *

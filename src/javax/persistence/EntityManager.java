@@ -795,8 +795,9 @@ public interface EntityManager {
      * Close an application-managed entity manager. 
      * After the close method has been invoked, all methods
      * on the <code>EntityManager</code> instance and any 
-     * <code>Query</code> and <code>TypedQuery</code>
-     * objects obtained from it will throw the <code>IllegalStateException</code>
+     * <code>Query</code>, <code>TypedQuery</code>, and
+     * <code>StoredProcedureQuery</code> objects obtained from 
+     * it will throw the <code>IllegalStateException</code>
      * except for <code>getProperties</code>, 
      * <code>getTransaction</code>, and <code>isOpen</code> (which will return false).
      * If this method is called when the entity manager is

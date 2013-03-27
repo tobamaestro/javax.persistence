@@ -169,7 +169,8 @@ public interface EntityManagerFactory {
     /**
      * Define the query, typed query, or stored procedure query as
      * a named query such that future query objects can be created
-     * from it using the <code>createNamedQuery</code> methods.
+     * from it using the <code>createNamedQuery</code> or
+     * <code>createNamedStoredProcedureQuery</code> method.
      * <p>Any configuration of the query object (except for actual
      * parameter binding) in effect when the named query is added
      * is retained as part of the named query definition.
@@ -177,11 +178,12 @@ public interface EntityManagerFactory {
      * hints, flush mode, lock mode, result set mapping information,
      * and information about stored procedure parameters.
      * <p>When the query is executed, information that can be set
-     * by means of the <code>Query</code> API can be overridden. Information
+     * by means of the query APIs can be overridden. Information
      * that is overridden does not affect the named query as
      * registered with the entity manager factory, and thus does
      * not affect subsequent query objects created from it by
-     * means of the <code>createNamedQuery</code> method.
+     * means of the <code>createNamedQuery</code> or
+     * <code>createNamedStoredProcedureQuery</code> method.
      * <p>If a named query of the same name has been previously
      * defined, either statically via metadata or via this method,
      * that query definition is replaced.

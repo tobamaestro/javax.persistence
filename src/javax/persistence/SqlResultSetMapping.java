@@ -21,7 +21,8 @@ import static java.lang.annotation.ElementType.TYPE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /** 
- * Specifies the mapping of the result of a native SQL query.
+ * Specifies the mapping of the result of a native SQL query or stored 
+ * procedure.
  *
  * <pre>
  *    Example:
@@ -46,6 +47,11 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  *    )
  * </pre>
  *
+ * @see Query
+ * @see StoredProcedureQuery
+ * @see NamedNativeQuery
+ * @see NamedStoredProcedureQuery
+ *
  * @since Java Persistence 1.0
  */
 @Target({TYPE}) 
@@ -54,7 +60,8 @@ public @interface SqlResultSetMapping {
 
     /** 
      * The name given to the result set mapping, and used to refer 
-     * to it in the methods of the {@link Query} API.
+     * to it in the methods of the {@link Query} and 
+     * {@link StoredProcedureQuery} APIs.
      */
     String name(); 
 

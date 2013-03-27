@@ -57,8 +57,11 @@ public @interface JoinColumns {
 
     /**
      *  (Optional) Used to specify or control the generation of a
-     *  foreign key constraint when table generation is in effect.  If
-     *  this element is not specified, the persistence provider's
+     *  foreign key constraint when table generation is in effect. 
+     *  If both this element and the <code>foreignKey</code> element 
+     *  of any of the <code>JoinColumn</code> elements are specified, 
+     *  the behavior is undefined.  If no foreign key annotation element
+     *  is specified in either location, the persistence provider's
      *  default foreign key strategy will apply.
      *
      *  @since Java Persistence 2.1
