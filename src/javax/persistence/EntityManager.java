@@ -880,7 +880,7 @@ public interface EntityManager {
      *         the given name
      * @since Java Persistence 2.1
      */
-    public <T> EntityGraph<T> getEntityGraph(String graphName);
+    public  EntityGraph<?> getEntityGraph(String graphName);
 
     /**
      * Return all named EntityGraphs that have been defined for the provided
