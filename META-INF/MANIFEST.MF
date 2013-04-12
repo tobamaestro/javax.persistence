@@ -20,4 +20,5 @@ Import-Package: javax.sql;resolution:=optional,
  org.osgi.service.jpa;version="1.0.100"
 Specification-Version: 2.1 Draft 13
 Bundle-SymbolicName: javax.persistence-api
+Extension-Name: javax.persistence
 
