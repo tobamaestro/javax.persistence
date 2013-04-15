@@ -48,12 +48,29 @@
 
     <build>
         <defaultGoal>verify</defaultGoal>
+        <!-- section added so tycho won't add the maven poms to the artifacts it builds -->
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.eclipse.tycho</groupId>
+                    <artifactId>tycho-packaging-plugin</artifactId>
+                    <version>${tycho.version}</version>
+                    <configuration>
+                        <archive>
+                            <addMavenDescriptor>false</addMavenDescriptor>
+                        </archive>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.eclipse.tycho</groupId>
                 <artifactId>tycho-compiler-plugin</artifactId>
                 <version>${tycho.version}</version>
                 <configuration>
+                    <!-- Set to force OSGi Compatability settings (defaults to "false") (Only available as of Tycho 0.16.0) -->
+                    <!-- requireJREPackageImports>true</requireJREPackageImports -->
                     <!-- Not needed. Compiler compatibility setting gotten from "Bundle-RequiredExecutionEnvironment" in manifest -->
                     <!-- source>1.6</source -->
                     <!-- target>1.6</target -->
