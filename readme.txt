@@ -8,12 +8,12 @@ Copyright (c) 2008, 2013 Sun Microsystems, Oracle Corporation. All rights reserv
  http://www.eclipse.org/org/documents/edl-v10.php.
 
   Contributors:
-      Linda DeMichiel -Java Persistence 2.1 - Early Draft Candidate 11 (December 18 2012)
+      Linda DeMichiel -Java Persistence 2.1
       Specification available from http://jcp.org/en/jsr/detail?id=338
       Oracle Committers - EclipseLink specific implementations and OSGi support
       Oracle Committers - Misc Bugfixes
 
-Java(TM) Persistence API, Version 2.1 - EARLY ACCESS
+Java(TM) Persistence API, Version 2.1
 This is an implementation of an early-draft specification developed under the
 Java Community Process (JCP).  The code is untested and presumed not to be a
 compatible implementation of JSR 338: Java(TM) Persistence 2.1.
