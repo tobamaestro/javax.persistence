@@ -153,7 +153,8 @@
         <property name="build.2.plugins.dir"        value="${build.location}/target"/>
         <property name="build.2.classes.dir"        value="${build.location}/target/classes"/>
         <property name="build.2.APIjavadoc.dir"     value="${build.location}/target/APIjavadoc"/>
-        <property name="build.2.src.dir"            value="${build.location}/src"/>
+        <property name="build.2.source.dir"            value="${build.location}/src"/>
+        <property name="build.2.resource.dir"       value="${build.location}/resource"/>
         <property name="releng.loc"                 value="${build.location}/../eclipselink.releng"/>
 
         <condition property="build.2.releng.dir"    value="${releng.loc}">
@@ -212,7 +213,7 @@
             <tag name ="bug" enabled="true" description="Related Bugs:" />
             <doctitle><![CDATA[${javadoc.title}]]></doctitle>
             <header><![CDATA[${javadoc.title}]]></header>
-            <fileset dir="${build.2.src.dir}" defaultexcludes="yes">
+            <fileset dir="${build.2.source.dir}" defaultexcludes="yes">
                 <include name="javax/persistence/**/*.java"/>
             </fileset>
         </javadoc>
@@ -237,8 +238,10 @@
                 <attribute name="Bundle-SymbolicName"                  value="${OSGi_SymbolicName}"/>
                 <attribute name="Extension-Name"                       value="${jar_Extension-Name}"/>
             </manifest>
+            <fileset dir="${build.location}"        includes="readme.txt"/>
+            <fileset dir="${build.2.resource.dir}"  includes="**/*.*"/>
             <fileset dir="${build.2.classes.dir}"   includes="javax/persistence/**/*.class"/>
-            <fileset dir="${build.2.src.dir}"       includes="javax/persistence/**/*.xsd"/>
+            <fileset dir="${build.2.source.dir}"    includes="javax/persistence/**/*.xsd"/>
         </jar>
     </target>
 
@@ -255,9 +258,12 @@
                 <attribute name="Bundle-ManifestVersion"               value="2"/>
                 <attribute name="Specification-Version"                value="${SPEC_VERSION}"/>
                 <attribute name="Bundle-SymbolicName"                  value="${OSGi_SymbolicName}.source"/>
+                <attribute name="Eclipse-SourceBundle"                 value="${OSGi_SymbolicName};version=&quot;${OSGi_Bundle-Version}&quot;"/>
                 <attribute name="Extension-Name"                       value="${jar_Extension-Name}"/>
             </manifest>
-            <fileset dir="${build.2.src.dir}"       includes="javax/persistence/**"/>
+            <fileset dir="${build.location}"        includes="readme.txt"/>
+            <fileset dir="${build.2.resource.dir}"  includes="**/*.*"/>
+            <fileset dir="${build.2.source.dir}"    includes="javax/persistence/**"/>
         </jar>
     </target>
 
@@ -276,6 +282,8 @@
                 <attribute name="Bundle-SymbolicName"                  value="${OSGi_SymbolicName}.javadoc"/>
                 <attribute name="Extension-Name"                       value="${jar_Extension-Name}"/>
             </manifest>
+            <fileset dir="${build.location}"        includes="readme.txt"/>
+            <fileset dir="${build.2.resource.dir}"  includes="**/*.*"/>
             <fileset dir="${build.2.APIjavadoc.dir}" includes="**"/>
         </jar>
     </target>
