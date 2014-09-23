@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 - 2013 Oracle Corporation. All rights reserved. 
+ * Copyright (c) 2008 - 2014 Oracle Corporation. All rights reserved. 
  * 
  * This program and the accompanying materials are made available under the 
  * terms of the Eclipse Public License v1.0 and Eclipse Distribution License v. 1.0 
@@ -63,7 +63,6 @@ import static javax.persistence.ConstraintMode.PROVIDER_DEFAULT;
  * be specified to override the mapping of the join table and/or its
  * join columns.
  *
- * <p>
  * <pre>
  *    Example 1: Overriding the mapping of a relationship defined by a mapped superclass
  *
