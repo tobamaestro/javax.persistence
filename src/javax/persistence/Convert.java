@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 - 2013 Oracle Corporation. All rights reserved.
+ * Copyright (c) 2011 - 2014 Oracle Corporation. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v1.0 and Eclipse Distribution License v. 1.0
@@ -77,7 +77,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  *     public class Employee {
  *         &#064;Id long id;
  *
- *         &#064;Convert(BooleanToIntegerConverter.class)
+ *         &#064;Convert(converter=BooleanToIntegerConverter.class)
  *          boolean fullTime;
  *          ...
  *     }
@@ -108,7 +108,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  *
  *     &#064;ElementCollection
  *     // applies to each element in the collection
- *     &#064;Convert(NameConverter.class) 
+ *     &#064;Convert(converter=NameConverter.class) 
  *     List&#060;String&#062; names;
  *
  *
@@ -116,7 +116,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  *                 The converter is applied to the map value.
  *
  *     &#064;ElementCollection
- *     &#064;Convert(EmployeeNameConverter.class)
+ *     &#064;Convert(converter=EmployeeNameConverter.class)
  *     Map&#060;String, String&#062; responsibilities;
  *
  *
