@@ -149,7 +149,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  *
  *     &#064;Entity public class PropertyRecord {
  *          ...
- *         &#064;Convert(name="key.region.city", 
+ *         &#064;Convert(attributeName="key.region.city", 
  *                  converter=CityConverter.class)
  *         &#064;ElementCollection
  *         Map&#060;Address, PropertyInfo&#062; parcels;
