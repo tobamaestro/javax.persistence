@@ -214,7 +214,7 @@
           <artifact:remoteRepository id="${snapshotId}" url="${snapshotURL}"/>
           <artifact:pom id="maven.project" file="pom.xml"/>
           <artifact:attach file="${artifactSrc}"     type="jar" classifier="sources"/>
-          <artifact:attach file="${artifactJavadoc}" type=zip classifier="javadoc"/>
+          <artifact:attach file="${artifactJavadoc}" type="zip" classifier="javadoc"/>
         </artifact:deploy>
     </target>
 

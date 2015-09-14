@@ -3,7 +3,7 @@
     <target name="info" depends="init">
         <!-- IMPL properties -->
         <property name="IMPL_NAMESPACE"      value="org.eclipse.persistence"/>
-        <property name="IMPL_VERSION"        value="2.1.0"/>
+        <property name="IMPL_VERSION"        value="2.1.1"/>
 
         <echo message="Metadata as defined by: 'https://wikis.oracle.com/display/GlassFish/Maven+Versioning+Rules':"/>
         <echo message=" "/>
@@ -119,8 +119,8 @@
         </tstamp>
         <property name="API_PACKAGE"         value="javax.persistence"/>
         <property name="SPEC_VERSION"        value="2.1"/>
-        <property name="SPEC_IMPL_VERSION"   value="2.1.0"/>
-        <property name="API_QUALIFIER"       value="b10"/>
+        <property name="SPEC_IMPL_VERSION"   value="2.1.1"/>
+        <property name="API_QUALIFIER"       value="b01"/>
 
         <property name="API_JAR"                    value="${API_PACKAGE}-api.jar"/>
         <property name="API_javadoc_file"           value="${API_PACKAGE}-api-javadoc.jar"/>
