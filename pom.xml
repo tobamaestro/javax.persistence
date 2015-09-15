@@ -19,6 +19,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <tycho.version>0.18.0</tycho.version>
         <release.version>2.1.1</release.version>
+        <maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
         <build.qualifier>v${maven.build.timestamp}</build.qualifier>
         <forceContextQualifier>${build.qualifier}</forceContextQualifier>
         <!-- BUILD Properties -->
