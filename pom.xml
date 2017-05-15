@@ -117,6 +117,7 @@
                     <!-- source>1.6</source -->
                     <!-- target>1.6</target -->
                     <!-- compilerArgument>-nowarn</compilerArgument> <disable all warnings -->
+                    <!--<compilerArgument>-warn:+deprecation,allJavadoc</compilerArgument>-->
                     <!-- compilerArgument>-warn:[+|-]warning_tokens_separated_by_comma - Specify the set of enabled warnings </compilerArgument -->
                     <!-- compilerArgument>-err:warning_tokens_separated_by_comma - convert exactly the listed warnings to errors  </compilerArgument -->
                     <!-- compilerArgument>-err:+warning_tokens_separated_by_comma - convert additional warnings to errors</compilerArgument -->

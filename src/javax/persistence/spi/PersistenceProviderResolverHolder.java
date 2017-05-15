@@ -19,6 +19,8 @@ package javax.persistence.spi;
 import java.lang.ref.ReferenceQueue;
 import java.lang.ref.SoftReference;
 import java.lang.ref.WeakReference;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.HashMap;
@@ -146,15 +148,12 @@ public class PersistenceProviderResolverHolder {
         private static ClassLoader getContextClassLoader() {
             if (System.getSecurityManager() == null) {
                 return Thread.currentThread().getContextClassLoader();
-            }
-            else {
-                return  (ClassLoader) java.security.AccessController.doPrivileged(
-                        new java.security.PrivilegedAction() {
-                            public java.lang.Object run() {
-                                return Thread.currentThread().getContextClassLoader();
-                            }
-                        }
-                );
+            } else {
+                return AccessController.doPrivileged(new PrivilegedAction<ClassLoader>() {
+                    public ClassLoader run() {
+                        return Thread.currentThread().getContextClassLoader();
+                    }
+                });
             }
         }
 
@@ -277,6 +276,7 @@ public class PersistenceProviderResolverHolder {
                 implements CacheKeyReference {
             private CacheKey cacheKey;
 
+            @SuppressWarnings("unchecked")
             LoaderReference(ClassLoader referent, ReferenceQueue q, CacheKey key) {
                 super(referent, q);
                 cacheKey = key;
@@ -295,6 +295,7 @@ public class PersistenceProviderResolverHolder {
                 implements CacheKeyReference {
             private CacheKey cacheKey;
 
+            @SuppressWarnings("unchecked")
             PersistenceProviderReference(List<PersistenceProvider> referent, ReferenceQueue q, CacheKey key) {
                 super(referent, q);
                 cacheKey = key;
