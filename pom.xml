@@ -9,21 +9,16 @@
     <version>2.2.0-SNAPSHOT</version>
     <packaging>eclipse-plugin</packaging>
 
-    <!-- tycho requires maven >= 3.0 -->
-    <prerequisites>
-        <maven>3.0</maven>
-    </prerequisites>
-
     <properties>
         <!-- TOOL Properties -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <tycho.version>0.23.0</tycho.version>
+        <tycho.version>1.0.0</tycho.version>
         <release.version>2.2.0</release.version>
         <maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
         <build.qualifier>v${maven.build.timestamp}</build.qualifier>
         <forceContextQualifier>${build.qualifier}</forceContextQualifier>
         <!-- BUILD Properties -->
-        <eclipse.drop>juno</eclipse.drop>
+        <eclipse.drop>luna</eclipse.drop>
     </properties>
 
     <organization>
@@ -49,9 +44,24 @@
 
     <build>
         <defaultGoal>verify</defaultGoal>
-        <!-- section added so tycho won't add the maven poms to the artifacts it builds -->
         <pluginManagement>
             <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>1.4.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.eclipse.tycho</groupId>
+                    <artifactId>tycho-maven-plugin</artifactId>
+                    <version>${tycho.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.eclipse.tycho</groupId>
+                    <artifactId>tycho-compiler-plugin</artifactId>
+                    <version>${tycho.version}</version>
+                </plugin>
+                <!-- section added so tycho won't add the maven poms to the artifacts it builds -->
                 <plugin>
                     <groupId>org.eclipse.tycho</groupId>
                     <artifactId>tycho-packaging-plugin</artifactId>
@@ -62,13 +72,44 @@
                         </archive>
                     </configuration>
                 </plugin>
+                <plugin>
+                    <groupId>org.eclipse.tycho</groupId>
+                    <artifactId>target-platform-configuration</artifactId>
+                    <version>${tycho.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.eclipse.tycho</groupId>
+                    <artifactId>tycho-source-plugin</artifactId>
+                    <version>${tycho.version}</version>
+                </plugin>
             </plugins>
         </pluginManagement>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <configuration>
+                    <rules>
+                        <requireMavenVersion>
+                            <version>3.0</version>
+                        </requireMavenVersion>
+                        <requireJavaVersion>
+                            <version>1.8</version>
+                        </requireJavaVersion>
+                    </rules>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <id>enforce</id>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>org.eclipse.tycho</groupId>
                 <artifactId>tycho-compiler-plugin</artifactId>
-                <version>${tycho.version}</version>
                 <configuration>
                     <!-- Set to force OSGi Compatability settings (defaults to "false") (Only available as of Tycho 0.16.0) -->
                     <!-- requireJREPackageImports>true</requireJREPackageImports -->
@@ -85,7 +126,6 @@
             <plugin>
                 <groupId>org.eclipse.tycho</groupId>
                 <artifactId>tycho-maven-plugin</artifactId>
-                <version>${tycho.version}</version>
                 <extensions>true</extensions>
                 <configuration>
                     <resolver>p2</resolver>
@@ -94,7 +134,6 @@
             <plugin>
                 <groupId>org.eclipse.tycho</groupId>
                 <artifactId>target-platform-configuration</artifactId>
-                <version>${tycho.version}</version>
                 <configuration>
                     <resolver>p2</resolver>
                     <environments>
@@ -140,7 +179,6 @@
             <plugin>
                 <groupId>org.eclipse.tycho</groupId>
                 <artifactId>tycho-source-plugin</artifactId>
-                <version>${tycho.version}</version>
                 <executions>
                     <execution>
                         <id>plugin-source</id>
@@ -153,31 +191,15 @@
                             <sourceBundle>true</sourceBundle>
                             <sourceBundleSuffix>.source</sourceBundleSuffix>
                             <qualifier>${build.qualifier}</qualifier>
+                            <additionalFileSets>
+                                <fileSet>
+                                    <directory>${project.basedir}/resource/</directory>
+                                    <includes>
+                                        <include>**/*.html</include>
+                                    </includes>
+                                </fileSet>
+                            </additionalFileSets>
                         </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>1.6</version>
-                <executions>
-                    <execution>
-                        <id>inject-common-into-src-bundles</id>
-                        <phase>package</phase>
-                        <configuration>
-                            <target>
-                                <zip file="./target/${project.artifactId}.source_${release.version}.${build.qualifier}.jar" duplicate="preserve">
-                                    <zipgroupfileset dir="./target">
-                                        <include name="${project.artifactId}.source_${release.version}.${build.qualifier}-sources.jar"/>
-                                    </zipgroupfileset>
-                                    <fileset dir="./resource" includes="*.html"/>
-                                </zip>
-                                <delete file="./target/${project.artifactId}.source_${release.version}.${build.qualifier}-sources.jar"/>
-                            </target>
-                        </configuration>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
                     </execution>
                 </executions>
             </plugin>
@@ -190,12 +212,5 @@
         </resources>
         <finalName>${project.artifactId}_${release.version}.${build.qualifier}</finalName>
     </build>
-
-    <pluginRepositories>
-        <pluginRepository>
-            <id>tycho-public</id>
-            <url>https://oss.sonatype.org/content/groups/public/</url>
-        </pluginRepository>
-    </pluginRepositories>
 
 </project>
