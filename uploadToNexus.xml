@@ -99,7 +99,7 @@
         <taskdef name="stripQualifier" classname="${custom.stripqualifier.task.class}" classpath="${custom.tasks.lib}"/>
 
         <property name="bundle.prefix"        value="javax.persistence"/>
-        <property name="bundle.criteria"      value="[2.0.100, 2.2)"/>
+        <property name="bundle.criteria"      value="[2.0.100, 2.3)"/>
         <property name="bundle.name"          value="Javax Persistence"/>
 
         <!-- Determine Version info from built bundle filename -->
