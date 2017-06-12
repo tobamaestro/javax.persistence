@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 - 2015 Oracle Corporation. All rights reserved.
+ * Copyright (c) 2008 - 2017 Oracle Corporation. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v1.0 and Eclipse Distribution License v. 1.0
@@ -60,7 +60,7 @@ public @interface PersistenceContext {
      * automatically synchronized with the current transaction or whether
      * the persistence context must be explicitly joined to the current
      * transaction by means of the EntityManager 
-     * {@link EntityManager#joinTransaction <code>joinTransaction</code>} method.
+     * {@link EntityManager#joinTransaction joinTransaction} method.
      * @since Java Persistence 2.1
      */
     SynchronizationType synchronization() default SynchronizationType.SYNCHRONIZED;
