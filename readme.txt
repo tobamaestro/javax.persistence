@@ -1,4 +1,4 @@
-Copyright (c) 2008, 2013 Sun Microsystems, Oracle Corporation. All rights reserved.
+Copyright (c) 2008, 2017 Sun Microsystems, Oracle Corporation. All rights reserved.
 
  This program and the accompanying materials are made available under the
  terms of the Eclipse Public License v1.0 and Eclipse Distribution License v. 1.0
@@ -8,9 +8,10 @@ Copyright (c) 2008, 2013 Sun Microsystems, Oracle Corporation. All rights reserv
  http://www.eclipse.org/org/documents/edl-v10.php.
 
   Contributors:
-      Linda DeMichiel -Java Persistence 2.1
+      Linda DeMichiel - Java Persistence 2.2
+      Lukas Jungmann - Java Persistence 2.2
       Specification available from http://jcp.org/en/jsr/detail?id=338
       Oracle Committers - EclipseLink specific implementations and OSGi support
       Oracle Committers - Misc Bugfixes
 
-Java(TM) Persistence API, Version 2.1
+Java(TM) Persistence API, Version 2.2

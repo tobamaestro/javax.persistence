@@ -153,7 +153,8 @@
         <property name="build.2.plugins.dir"        value="${build.location}/target"/>
         <property name="build.2.classes.dir"        value="${build.location}/target/classes"/>
         <property name="build.2.APIjavadoc.dir"     value="${build.location}/target/APIjavadoc"/>
-        <property name="build.2.source.dir"            value="${build.location}/src"/>
+        <property name="build.2.RIjavadoc.dir"      value="${build.location}/target/RIjavadoc"/>
+        <property name="build.2.source.dir"         value="${build.location}/src"/>
         <property name="build.2.resource.dir"       value="${build.location}/resource"/>
         <property name="releng.loc"                 value="${build.location}/../eclipselink.releng"/>
 
@@ -185,9 +186,11 @@
         <fail message="${persistence.prefix} bundle not found. run mvn, then retry to generate api" unless="persistence.version"/>
         <stripQualifier input="${persistence.version}"      property="IMPL_VERSION"/>
         <say  message="Found ${persistence.prefix}_${persistence.version}.jar"                          if="persistence.version"/>
+        <property name="RI_javadoc_file" value="${persistence.prefix}.javadoc_${persistence.version}.jar"/>
     </target>
 
     <target name="build" depends="init, package-jar, package-src, build-javadoc, package-javadoc"/>
+    <target name="build-ri" depends="init, build-ri-javadoc, package-ri-javadoc"/>
 
     <target name="build-javadoc">
         <!-- the following property needs to be here because the "qualifier" is generated at runtime -->
@@ -219,6 +222,37 @@
         </javadoc>
     </target>
 
+    <target name="build-ri-javadoc">
+        <!-- the following property needs to be here because the "qualifier" is generated at runtime -->
+        <property name="javadoc.title" value="Java Persistence ${SPEC_VERSION} API Reference"/>
+        <delete dir="${build.2.RIjavadoc.dir}" failonerror="false"/>
+        <javadoc
+            maxmemory="384m"
+            Verbose="false"
+            packagenames="${API_PACKAGE}.**,org.**"
+            destdir="${build.2.RIjavadoc.dir}"
+            useexternalfile="yes"
+            additionalparam="-breakiterator -quiet"
+            windowtitle="${javadoc.title}"
+            >
+            <classpath>
+                <path id="javadoc.path">
+                    <pathelement path="${build.2.plugins.dir}/${API_JAR}"/>
+                </path>
+            </classpath>
+            <tag name ="author" enabled="true" description="Author:" />
+            <tag name ="since" scope="all" description="Since:" />
+            <tag name ="SBGen" scope="all" description="SBGen:" />
+            <tag name ="bug" enabled="true" description="Related Bugs:" />
+            <doctitle><![CDATA[${javadoc.title}]]></doctitle>
+            <header><![CDATA[${javadoc.title}]]></header>
+            <fileset dir="${build.2.source.dir}" defaultexcludes="yes">
+                <include name="javax/persistence/**/*.java"/>
+                <include name="org/**/*.java"/>
+            </fileset>
+        </javadoc>
+    </target>
+
     <target name="package-jar" depends="init">
         <delete file="${build.2.plugins.dir}/${API_JAR}" failonerror="false"/>
         <jar jarfile="${build.2.plugins.dir}/${API_JAR}" duplicate="preserve">
@@ -228,7 +262,7 @@
                 <attribute name="Bundle-ClassPath"                     value="."/>
                 <attribute name="Specification-Vendor"                 value="${jar_Specification-Vendor}"/>
                 <attribute name="Bundle-Name"                          value="${OSGi_BundleName}"/>
-                <attribute name="Bundle-RequiredExecutionEnvironment"  value="JavaSE-1.6"/>
+                <attribute name="Bundle-RequiredExecutionEnvironment"  value="JavaSE-1.8"/>
                 <attribute name="Implementation-Vendor"                value="${jar_Implementation-Vendor}"/>
                 <attribute name="Bundle-Vendor"                        value="${OSGi_Bundle-Vendor}"/>
                 <attribute name="Bundle-Version"                       value="${OSGi_Bundle-Version}"/>
@@ -285,6 +319,27 @@
             <fileset dir="${build.location}"        includes="readme.txt"/>
             <fileset dir="${build.2.resource.dir}"  includes="**/*.*"/>
             <fileset dir="${build.2.APIjavadoc.dir}" includes="**"/>
+        </jar>
+    </target>
+
+    <target name="package-ri-javadoc" depends="init">
+        <delete file="${build.2.plugins.dir}/${RI_javadoc_file}" failonerror="false"/>
+        <jar jarfile="${build.2.plugins.dir}/${RI_javadoc_file}" duplicate="preserve">
+            <manifest>
+                <attribute name="Implementation-Version"               value="${SPEC_IMPL_VERSION}"/>
+                <attribute name="Specification-Vendor"                 value="${jar_Specification-Vendor}"/>
+                <attribute name="Bundle-Name"                          value="${OSGi_BundleName} Javadoc"/>
+                <attribute name="Implementation-Vendor"                value="${jar_Implementation-Vendor}"/>
+                <attribute name="Bundle-Vendor"                        value="${OSGi_Bundle-Vendor}"/>
+                <attribute name="Bundle-Version"                       value="${OSGi_Bundle-Version}"/>
+                <attribute name="Bundle-ManifestVersion"               value="2"/>
+                <attribute name="Specification-Version"                value="${SPEC_VERSION}"/>
+                <attribute name="Bundle-SymbolicName"                  value="${API_PACKAGE}.javadoc"/>
+                <attribute name="Extension-Name"                       value="${jar_Extension-Name}"/>
+            </manifest>
+            <fileset dir="${build.location}"        includes="readme.txt"/>
+            <fileset dir="${build.2.resource.dir}"  includes="**/*.*"/>
+            <fileset dir="${build.2.RIjavadoc.dir}" includes="**"/>
         </jar>
     </target>
 </project>
