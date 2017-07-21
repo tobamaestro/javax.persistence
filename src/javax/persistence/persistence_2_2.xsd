@@ -9,7 +9,7 @@
 
   <xsd:annotation>
     <xsd:documentation>
-      @(#)persistence_2_2.xsd  2.2  July 7, 2017
+      @(#)persistence_2_2.xsd 2.2  July 17, 2017
     </xsd:documentation>
   </xsd:annotation>
 
@@ -50,7 +50,7 @@
       <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
-          http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+          http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
         version="2.2">
           ...
       </persistence>
