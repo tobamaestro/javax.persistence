@@ -6,14 +6,14 @@
     <name>JPA Spec OSGi Bundle</name>
     <groupId>org.eclipse.persistence</groupId>
     <artifactId>javax.persistence</artifactId>
-    <version>2.2.0-SNAPSHOT</version>
+    <version>2.2.1-SNAPSHOT</version>
     <packaging>eclipse-plugin</packaging>
 
     <properties>
         <!-- TOOL Properties -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <tycho.version>1.0.0</tycho.version>
-        <release.version>2.2.0</release.version>
+        <release.version>2.2.1</release.version>
         <maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
         <build.qualifier>v${maven.build.timestamp}</build.qualifier>
         <forceContextQualifier>${build.qualifier}</forceContextQualifier>
