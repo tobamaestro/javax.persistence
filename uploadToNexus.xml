@@ -201,8 +201,8 @@
         <say message="${publish.message}"                                                                             if="publish.ok"/>
      </target>
 
-    <!-- Uploads a single artifact & source to maven repository -->
-    <target name="upload-artifact" depends="verify-publish, prepare-pom, upload-snapshot, upload-artifact-staging, upload-source-staging">
+    <!-- Uploads a single artifact, source & javadoc to maven repository -->
+    <target name="upload-artifact" depends="verify-publish, prepare-pom, upload-snapshot, upload-artifact-staging, upload-source-staging, upload-javadoc-staging">
         <!-- cleanup -->
         <delete file="pom.xml"/>
     </target>
