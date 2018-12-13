@@ -107,9 +107,9 @@
         <taskdef name="selectbundle"   classname="${custom.selectbundle.task.class}"   classpath="${custom.tasks.lib}"/>
         <taskdef name="stripQualifier" classname="${custom.stripqualifier.task.class}" classpath="${custom.tasks.lib}"/>
 
-        <property name="bundle.prefix"        value="javax.persistence"/>
+        <property name="bundle.prefix"        value="jakarta.persistence"/>
         <property name="bundle.criteria"      value="[2.0.100, 2.3)"/>
-        <property name="bundle.name"          value="Javax Persistence"/>
+        <property name="bundle.name"          value="Java Persistence"/>
 
         <!-- Determine Version info from built bundle filename -->
         <selectbundle basename="${bundle.prefix}"  directory="${maven.2.target.dir}"

@@ -16,11 +16,11 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.eclipse.persistence</groupId>
-  <artifactId>javax.persistence</artifactId>
+  <artifactId>jakarta.persistence</artifactId>
   <version>@version@</version>
   <packaging>jar</packaging>
   <name>@artifactName@</name>
-  <description>javax.persistence build based upon git transaction @git.hash@</description>
+  <description>jakarta.persistence build based upon git transaction @git.hash@</description>
   <url>http://www.eclipse.org/eclipselink</url>
   <organization>
     <name>Eclipse.org - EclipseLink Project</name>

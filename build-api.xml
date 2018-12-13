@@ -12,7 +12,7 @@
 
 -->
 
-<project name="javax.persistence-api"  basedir="." default="info">
+<project name="jakarta.persistence-api"  basedir="." default="info">
 
     <target name="info" depends="init">
         <!-- IMPL properties -->
@@ -131,9 +131,9 @@
            <format property="build.date" pattern="yyyyMMdd"/>
            <format property="build.time" pattern="HHmm"/>
         </tstamp>
-        <property name="API_PACKAGE"         value="javax.persistence"/>
+        <property name="API_PACKAGE"         value="jakarta.persistence"/>
         <property name="SPEC_VERSION"        value="2.2"/>
-        <property name="SPEC_IMPL_VERSION"   value="2.2.0"/>
+        <property name="SPEC_IMPL_VERSION"   value="2.2.2"/>
         <property name="API_QUALIFIER"       value="b01"/>
 
         <property name="API_JAR"                    value="${API_PACKAGE}-api.jar"/>
@@ -157,7 +157,7 @@
         <property name="Maven_API_javadoc_file"     value="${API_PACKAGE}-api-${SPEC_IMPL_VERSION}-javadoc.jar"/>
         <property name="Maven_API_source_file"      value="${API_PACKAGE}-api-${SPEC_IMPL_VERSION}-sources.jar"/>
 
-        <dirname  property="build.location_temp" file="${ant.file.javax.persistence-api}"/>
+        <dirname  property="build.location_temp" file="${ant.file.jakarta.persistence-api}"/>
         <pathconvert targetos="unix" property="build.location">
             <path>
                 <pathelement location="${build.location_temp}"/>
