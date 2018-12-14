@@ -165,9 +165,9 @@
             <param name="groupId"         value="org.eclipse.persistence"/>
             <param name="artifactId"      value="${bundle.prefix}"/>
             <param name="artifactVersion" value="${maven.version}"/>
-            <param name="artifact"        value="${maven.2.target.dir}/${bundle.prefix}_${bundle.version}.jar"/>
-            <param name="artifactSrc"     value="${maven.2.target.dir}/${bundle.prefix}.source_${bundle.version}.jar"/>
-            <param name="artifactJavadoc" value="${maven.2.target.dir}/${bundle.prefix}.javadoc_${bundle.version}.jar"/>
+            <param name="artifact"        value="${maven.2.target.dir}/${bundle.prefix}-${bundle.version}.jar"/>
+            <param name="artifactSrc"     value="${maven.2.target.dir}/${bundle.prefix}-${bundle.version}-sources.jar"/>
+            <param name="artifactJavadoc" value="${maven.2.target.dir}/${bundle.prefix}-${bundle.version}-javadoc.jar"/>
             <param name="artifactName"    value="${bundle.name}"/>
             <param name="dependencies"    value=""/>
         </antcall>
