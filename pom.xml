@@ -210,7 +210,6 @@
                             <goal>plugin-source</goal>
                         </goals>
                         <configuration>
-                            <!--<finalName>${project.artifactId}.source_${release.version}.${build.qualifier}</finalName>-->
                             <sourceBundle>true</sourceBundle>
                             <sourceBundleSuffix>.source</sourceBundleSuffix>
                             <!--<qualifier>${build.qualifier}</qualifier>-->
@@ -244,7 +243,6 @@
                 <directory>./resource</directory>
             </resource>
         </resources>
-        <!--<finalName>${project.artifactId}_${release.version}.${build.qualifier}</finalName>-->
     </build>
 
 </project>
