@@ -1,17 +1,17 @@
 Manifest-Version: 1.0
-Export-Package: javax.persistence;jpa="2.2";version="2.2.2",
- javax.persistence.criteria;jpa="2.2";version="2.2.2",
- javax.persistence.metamodel;jpa="2.2";version="2.2.2",
- javax.persistence.spi;jpa="2.2";version="2.2.2",
+Export-Package: javax.persistence;jpa="2.2";version="2.2.3",
+ javax.persistence.criteria;jpa="2.2";version="2.2.3",
+ javax.persistence.metamodel;jpa="2.2";version="2.2.3",
+ javax.persistence.spi;jpa="2.2";version="2.2.3",
  org.osgi.service.jpa;version="1.1.0"
-Implementation-Version: 2.2.2
+Implementation-Version: 2.2.3
 Bundle-ClassPath: .
 Specification-Vendor: Oracle
 Bundle-Name: Java Persistence API 2.2
 Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version>=1.8))"
 Implementation-Vendor: Eclipse.org - EclipseLink Project
 Bundle-Vendor: Eclipse.org - EclipseLink Project
-Bundle-Version: 2.2.2
+Bundle-Version: 2.2.3
 Bundle-ManifestVersion: 2
 Bundle-Activator: org.eclipse.persistence.javax.persistence.osgi.Activator
 Import-Package: javax.sql;resolution:=optional,

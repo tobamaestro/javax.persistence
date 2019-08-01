@@ -1,6 +1,6 @@
 <!--
 
-    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+    Copyright (c) 2018, 2019 Oracle and/or its affiliates. All rights reserved.
 
     This program and the accompanying materials are made available under the
     terms of the Eclipse Public License v. 2.0 which is available at
@@ -133,7 +133,7 @@
         </tstamp>
         <property name="API_PACKAGE"         value="jakarta.persistence"/>
         <property name="SPEC_VERSION"        value="2.2"/>
-        <property name="SPEC_IMPL_VERSION"   value="2.2.2"/>
+        <property name="SPEC_IMPL_VERSION"   value="2.2.3"/>
         <property name="API_QUALIFIER"       value="b01"/>
 
         <property name="API_JAR"                    value="${API_PACKAGE}-api.jar"/>

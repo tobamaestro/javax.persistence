@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+    Copyright (c) 2018, 2019 Oracle and/or its affiliates. All rights reserved.
 
     This program and the accompanying materials are made available under the
     terms of the Eclipse Public License v. 2.0 which is available at
@@ -20,14 +20,14 @@
     <name>JPA Spec OSGi Bundle</name>
     <groupId>org.eclipse.persistence</groupId>
     <artifactId>jakarta.persistence</artifactId>
-    <version>2.2.2</version>
+    <version>2.2.3</version>
     <packaging>eclipse-plugin</packaging>
 
     <properties>
         <!-- TOOL Properties -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <tycho.version>1.2.0</tycho.version>
-        <release.version>2.2.2</release.version>
+        <release.version>2.2.3</release.version>
         <!--<maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>-->
         <!--<build.qualifier>v${maven.build.timestamp}</build.qualifier>-->
         <!--<forceContextQualifier>${build.qualifier}</forceContextQualifier>-->
