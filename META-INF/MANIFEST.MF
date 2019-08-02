@@ -7,7 +7,7 @@ Export-Package: javax.persistence;jpa="2.2";version="2.2.3",
 Implementation-Version: 2.2.3
 Bundle-ClassPath: .
 Specification-Vendor: Oracle
-Bundle-Name: Java Persistence API 2.2
+Bundle-Name: Jakarta Persistence API 2.2
 Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version>=1.8))"
 Implementation-Vendor: Eclipse.org - EclipseLink Project
 Bundle-Vendor: Eclipse.org - EclipseLink Project

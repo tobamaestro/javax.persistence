@@ -108,7 +108,7 @@
         <taskdef name="stripQualifier" classname="${custom.stripqualifier.task.class}" classpath="${custom.tasks.lib}"/>
 
         <property name="bundle.prefix"        value="jakarta.persistence"/>
-        <property name="bundle.name"          value="Java Persistence"/>
+        <property name="bundle.name"          value="Jakarta Persistence"/>
         <property name="OSGi.version"         value="2.2.3" />
 
         <!-- Maven standards state we should publish with a stripped down 3-part version rather -->
