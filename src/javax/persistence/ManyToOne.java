@@ -30,7 +30,7 @@ import static javax.persistence.FetchType.EAGER;
  * specify the target entity explicitly since it can usually be
  * inferred from the type of the object being referenced.  If the
  * relationship is bidirectional, the non-owning
- * <code>OneToMany</code> entity side must used the
+ * <code>OneToMany</code> entity side must use the
  * <code>mappedBy</code> element to specify the relationship field or
  * property of the entity that is the owner of the relationship.
  *
